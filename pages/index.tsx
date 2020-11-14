@@ -5,8 +5,10 @@ import React from 'react';
 // import './home.scss';
 import Carousel from '../components/carousel/carousel';
 import Layout from '../components/layout';
-import { requestCarouselApiData } from '../state/actions/carouselActions';
+// import { requestCarouselApiData } from '../state/actions/carouselActions';
 import { connect } from 'react-redux';
+import { NextPageContext } from 'next'
+import { env } from 'process';
 
 // const setCurrentSlide = (val:number) => store.dispatch({type: 'INCREMENT_SLIDE', payload: val});
 
@@ -31,16 +33,17 @@ interface IArtworkProps {
 }
 
 
-class HomePage extends React.Component <IArtworkProps> { 
-
-  render(){
+export default function HomePage({ carouselData }) {
+  console.log(carouselData);
     return (
       <Layout>
       <div className="row">
         <div className="col-sm-12">
           <div className="HomePage">
             <div className="mt-1">
-            <Carousel />
+              <p>{process.env.apiServer}</p>
+              <p>{carouselData.artwork[0].title}</p>
+            <Carousel slides={carouselData}/>
             </div>
         </div>
         <div className="col-sm-8 offset-sm-2">
@@ -53,8 +56,36 @@ class HomePage extends React.Component <IArtworkProps> {
       </div>
       </Layout>
     )
-  }
 };
 
-export default HomePage;
+export async function getStaticProps() {
+  // const allPostsData = getSortedPostsData()
+  const response = await fetch(`${process.env.apiServer}/api/carousel/1`);
+  const carouselData = await response.json();
+  return {
+    props: {
+      carouselData
+    }
+  }
+}
+
+
+// export async function getInitialProps({ req }: NextPageContext) {
+//   let carouselData;
+//   const response = await fetch(`${process.env.apiServer}/api/carousel/1`);
+//   carouselData = await response.json();
+//   console.log(carouselData);
+//   return {
+//     props: {
+//       carouselData
+//     }
+   
+//   }
+// }
+
+
+
+
+
+// export default HomePage;
 
