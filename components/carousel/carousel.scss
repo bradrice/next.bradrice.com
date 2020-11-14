@@ -1,0 +1,14 @@
+@use '../../styles/variables';
+
+// $carousel-control-color: $imperial-red;
+
+.carousel-image {
+    display: block;
+    margin: auto;
+    max-height: 500px;
+}
+
+.alt-holder {
+    max-width: 600px;
+    margin: auto;
+}
