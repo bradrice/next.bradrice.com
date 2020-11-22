@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import React from 'react';
 // import './home.scss';
-import Carousel from '../components/carousel/carousel';
+import HomeCarousel from '../components/carousel/carousel';
 import Layout from '../components/layout';
 // import { requestCarouselApiData } from '../state/actions/carouselActions';
 import { connect } from 'react-redux';
@@ -34,20 +34,17 @@ interface IArtworkProps {
 
 
 export default function HomePage({ carouselData }) {
-  console.log(carouselData);
     return (
       <Layout>
       <div className="row">
         <div className="col-sm-12">
-          <div className="HomePage">
+          <div className={styles.HomePage}>
             <div className="mt-1">
-              <p>{process.env.apiServer}</p>
-              <p>{carouselData.artwork[0].title}</p>
-            <Carousel slides={carouselData}/>
+            <HomeCarousel slides={carouselData}/>
             </div>
         </div>
         <div className="col-sm-8 offset-sm-2">
-          <div className="homecopy">
+          <div className={styles.homecopy}>
           <p className="text-center">View more of my <Link href="/art"><a className="btn btn-primary">Artwork</a></Link></p>
           <p>My artwork is all original, one of a kind pieces unless otherwise noted. I paint primarily in watercolor and or acrylic. I explore a number of subject matter as well as abstract art.</p>
           </div>

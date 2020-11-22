@@ -5,8 +5,10 @@ import React from "react";
 // import { connect } from 'react-redux';
 // import { advanceSlide, recedeSlide } from '../../state/actions/carouselActions';
 import { fetchCarouselData } from '../../lib/api';
-// import './carousel.scss';
-// import altimage from '/images/alt-front.jpg'
+import styles from './carousel.module.scss';
+// import altimage from '/images/alt-front.jpg';
+import { Carousel } from 'react-bootstrap';
+import { symlink } from "fs/promises";
 
 // import { connect } from "react-redux";
 // import { fetchProducts } from "../../state/actions/productActions";
@@ -17,7 +19,7 @@ import { fetchCarouselData } from '../../lib/api';
 //     )
 // }
 
-export default function Carousel({ slides }) {
+export default function HomeCarousel({ slides }) {
     // const clickHandler = (e:any) => { console.log('hanlder', e) }
     // console.log(slides);
     // return (
@@ -27,15 +29,15 @@ export default function Carousel({ slides }) {
     let carousel;
       if (!carouselLoaded){
         carousel = (
-          <div className="alt-holder">
-            {/* <img src={altimage} className="img-fluid" alt="carousel didn't load" /> */}
+          <div className={styles.altHolder}>
+            <img src="/images/alt-front.jpg" className="img-fluid" alt="carousel didn't load" />
             <p>If you are seeing this, the server is not working properly right now. Images are served up by another service and it may be down. This is a painting I did, but is showing as an alternate to what you would normally see.</p>
           </div>
         )
       } else {
         carousel = (
-          <div className="holder">
-          <div className="carousel-wrapper">
+          <div className={styles.holder}>
+          {/* <div className="carousel-wrapper">
             <div id="carouselHome" className="carousel slide" data-ride="carousel">
               <ol className="carousel-indicators">
                 <li data-target="#carouselHome" data-slide-to="0" className="active"></li>
@@ -61,7 +63,28 @@ export default function Carousel({ slides }) {
                 <span className="sr-only">Next</span>
               </a>
             </div>
-          </div>
+          </div> */}
+          <Carousel>
+          {slides.artwork.map((slide:any, index:Number) => {
+                            let isActive = index === 0 ? true: false;
+                            return (
+                                <Carousel.Item key={slide.id}>
+                                  <div className={styles.imageWrap}>
+                                  <img
+                                  className={styles.carouselImage}
+                                  src={slide.artimage.gallery_medium_thumbnail}
+                                  alt={slide.id}
+                                  id={slide.title}
+                                />
+                                  </div>
+                                <Carousel.Caption>
+                                <h3>{slide.title}</h3>
+                                <p>{slide.description}</p>
+                              </Carousel.Caption>
+                            </Carousel.Item>
+                            )
+                    })}
+</Carousel>
           </div>
         )
       }
