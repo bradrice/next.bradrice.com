@@ -4,16 +4,17 @@ import { getAllArtIds, getArtData } from '../../lib/art';
 // import {Elements} from '@stripe/react-stripe-js';
 import SaleInfo from '../../components/saleinfo/saleinfo';
 import Card from 'react-bootstrap/Card';
+import styles from './art.module.scss';
+import Head from 'next/head';
 
 // const stripePromise = loadStripe('pk_test_AuwxcUOjPDUHbXyODkwDQ74r');
-
 
 export default function ArtDetail({ artData }) {
 
     let artwork = (
         <div className="row">
-          <div className="col">
-            <Card className="card m-1">
+          <div className="col-sm-8 offset-2">
+            <Card className={styles.cardDetail}>
             {artData.artimage &&
               <Card.Img src={artData.artimage.gallery_large} alt={artData.description}  />
             }
@@ -32,7 +33,17 @@ export default function ArtDetail({ artData }) {
           </div>
         </div>
       )
-      return <Layout>{artwork}</Layout>
+      return <Layout>
+        <Head>
+        <title>Brad Rice art</title>
+          <meta property="og:url"           content={`https://bradrice.com/art/${artData.id}`} />
+          <meta property="og:type"          content="website" />
+          <meta property="og:title"         content={`Art by Brad Rice ${artData.title}`} />
+          <meta property="og:description"   content={artData.description} />
+          <meta property="og:image"         content={artData.artimage.gallery_medium}  />
+        </Head>
+        {artwork}
+        </Layout>
 
         }
 

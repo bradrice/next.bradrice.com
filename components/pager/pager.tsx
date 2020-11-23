@@ -1,7 +1,8 @@
 import React from 'react';
-import './pager.scss';
-import { connect } from 'react-redux';
-import { ConnectedArtPage } from '../art/ArtPage'
+import { Button } from 'react-bootstrap';
+// import styles from './pager.scss';
+// import { connect } from 'react-redux';
+// import { ConnectedArtPage } from '../art/ArtPage'
 import { requestArtworkApiData, setSaleItem, requestArtworkPagedApiData } from '../../state/actions/artworkActions';
 
 interface IPagerProps {
@@ -9,80 +10,32 @@ interface IPagerProps {
   requestArtworkPagedData: any
 }
 
-class Pager extends React.Component <IPagerProps> {
+export default function Pager({ artData, pageTo, goNext, goPrev, pageNum, pageCount }) {
+  const pageSize = process.env.NEXT_PUBLIC_PAGESIZE;
+  console.log("previous", artData.previous);
+  console.log("previous", artData.next);
+  console.log('pageNum in pager', pageNum);
 
-  goNext = (e) => {
-    console.log("fetch url:", this.props.next);
-    if(this.props.next != null){
-      this.props.requestArtworkPagedData(this.props.next);
-    }
+  let pages = Math.ceil(pageCount / Number(pageSize));
+  console.log(pages);
+  let pageArray = [];
+  for(let i = 0; i<pages; i++) {
+    console.log('build page array', i)
+    pageArray[i] = i+1;
   }
-
-  goPrevious = (e) => {
-    console.log("fetch url:", this.props.previous);
-    if(this.props.previous != null){
-      this.props.requestArtworkPagedData(this.props.previous);
-    }
-  }
-
-  goToPage = (item) => {
-    console.log(item);
-    let url;
-    if(item === "1") {
-      url = 'http://localhost:8000/api/artwork?format=json'
-    } else {
-      url = `http://localhost:8000/api/artwork?page=${item}&format=json`
-    }
-      this.props.requestArtworkPagedData(url);
-  }
-
-  render () {
-    let pageCount = this.props.pages;
-    let pageArray = []
-    for(let i = 0; i<pageCount; i++) {
-      pageArray[i] = i+1;
-    }
-    const pagelist = pageArray.map((item, i) => (
-      <li className="page-item" key={i}>
-        <a className="page-link" href="#" onClick={() => this.goToPage(item)} >{item}</a>
-      </li>
-    ))
-    console.log(pagelist)
-    return (
+  const pagelist = pageArray.map((item, i) => (
+    <li className={`page-item ${pageNum == item ? "active" : ""}`} key={i}>
+      <a className="page-link"  href="#" onClick={() => pageTo(item)} >{item}</a>
+    </li>
+  ))
+  return (
       <nav aria-label="Page navigation example">
       <ul className="pagination">
-          <li className="page-item"><button className="page-link" onClick={this.goPrevious}>Previous</button></li>
+          <li className="page-item"><Button className="page-link" onClick={() => goPrev()} disabled={ pageNum === 1 ? true: false }>Previous</Button></li>
           {pagelist}
-          <li className="page-item"><button className="page-link" disabled={this.props.nextdisabled} onClick={this.goNext}>Next</button></li>
+          <li className="page-item"><Button className="page-link" onClick={() => goNext()} disabled={ pageNum !== pages ? false: true }>Next</Button></li>
       </ul>
       </nav>
     )
-  }
   };
 
-
-  const mapStateToProps = (state /*, ownProps*/) => {
-    return {
-      count: state.artwork.count,
-      next: state.artwork.next,
-      previous: state.artwork.previous,
-      nextdisabled: state.artwork.next ? false : true,
-      pages: state.artwork.pages
-
-    }
-  };
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      requestArtworkPagedData: (url:string) => {
-        console.log('getting ready to dispatch with this url', url);
-        dispatch(requestArtworkPagedApiData(url));
-      }
-    }
-  };
-  
-  
-  export const ConnectedPager = connect(
-    mapStateToProps,
-    mapDispatchToProps
-    )(Pager)

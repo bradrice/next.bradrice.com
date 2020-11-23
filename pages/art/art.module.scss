@@ -9,7 +9,7 @@
 .sold {
     font-size: 24px;
     color: #990000;
-    font-weight: bold;
+    font-weight: bold;margin: auto;
 }
 
 .artHolder {
@@ -21,25 +21,14 @@
 }
 
 .cardItem {
-    margin-bottom: .75rem;
     white-space: nowrap;
     display: inline-block;
+    border: none;
+    margin: 0 auto 2rem auto;
 }
 
-// .card-columns {
-//     .card {
-//       margin-bottom: $card-columns-margin;
-//     }
-  
-//     @include media-breakpoint-up(sm) {
-//       column-count: $card-columns-count;
-//       column-gap: $card-columns-gap;
-//       orphans: 1;
-//       widows: 1;
-  
-//       .card {
-//         display: inline-block; // Don't let them vertically span multiple columns
-//         width: 100%; // Don't let their width change
-//       }
-//     }
-//   }
+
+    .cardDetail {
+        width: 80%; 
+        margin: 1em auto;   
+  }

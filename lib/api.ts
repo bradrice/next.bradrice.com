@@ -14,7 +14,7 @@ export const fetchArtworkDetailData = async (id) => {
         console.log('fetting artwork:', id);
         const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/artwork/${id}`);
         const data = (await response).json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (e) {
         console.log(e);
@@ -26,7 +26,7 @@ export const fetchArtworkPagedData = async (url:string) => {
     try {
         const response = await fetch(url+'&format=json');
         const data = (await response).json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (e) {
         console.log(e);
