@@ -2,14 +2,16 @@
 // $card-columns-count: 3;
 // $card-columns-gap: 1em;
 
+@import '../../styles/variables';
+
 .filter-control {
     margin-bottom: .5em;
 }
 
 .sold {
-    font-size: 24px;
-    color: #990000;
-    font-weight: bold;margin: auto;
+    color: $imperial-red;
+    font-weight: bold;
+    margin: auto;
 }
 
 .artHolder {
@@ -25,10 +27,19 @@
     display: inline-block;
     border: none;
     margin: 0 auto 2rem auto;
+    text-align: left;
 }
 
 
     .cardDetail {
         width: 80%; 
         margin: 1em auto;   
+  }
+
+  .cardText {
+      margin-bottom: .5em;
+  }
+
+  .cardCol {
+      text-align: center;
   }

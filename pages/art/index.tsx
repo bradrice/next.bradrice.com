@@ -10,6 +10,7 @@ import CardColumns from 'react-bootstrap/CardColumns';
 import SaleInfo from '../../components/saleinfo/saleinfo';
 import Pager from '../../components/pager/pager';
 import Head from 'next/head'
+import { syncBuiltinESMExports } from 'module';
 
 
 // const setCurrentSlide = (val:number) => store.dispatch({type: 'INCREMENT_SLIDE', payload: val});
@@ -112,14 +113,16 @@ export default function ArtListPage({ artData }) {
           <div className={styles.artHolder}>
           <div className="row">
                 {(artWork.results || []).map(item => (
-                    <div className="col-sm-4" key={item.id}>
+                    <div className={`col-sm-4 ${styles.cardCol}`} key={item.id}>
                       <Card className={styles.cardItem}>
                       <Link href={`/art/${item.id}`}><Card.Img src={item.artimage.gallery_medium} alt={item.description}  /></Link>
                       <Card.Body>
                         <Card.Title>{item.title}</Card.Title>
-                        <Card.Text>
+                        <Card.Text className={styles.cardText}>
                           {item.description}
-                      
+                        </Card.Text>
+                        <Card.Text className={styles.cardText}>
+                        {item.sold ? <span className={styles.sold}>Sold</span> : ""}
                         </Card.Text>
                         <Link href={`/art/${item.id}`}>Detail</Link>
                       </Card.Body>    
@@ -146,11 +149,11 @@ export default function ArtListPage({ artData }) {
           )
       }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const pageSize = process.env.NEXT_PUBLIC_PAGESIZE;
   console.log("in getStaticProps", pageSize);
   const artData = await fetchArtworkPagedData(`${process.env.apiServer}/api/artwork/?page=1&page_size=${pageSize}`);
-  console.log("artwork:", artData);
+  // console.log("artwork:", artData);
   return {
     props: {
       artData

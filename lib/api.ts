@@ -26,7 +26,7 @@ export const fetchArtworkPagedData = async (url:string) => {
     try {
         const response = await fetch(url+'&format=json');
         const data = (await response).json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (e) {
         console.log(e);

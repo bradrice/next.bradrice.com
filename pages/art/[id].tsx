@@ -24,7 +24,7 @@ export default function ArtDetail({ artData }) {
                   <p>{artData.description}</p>
                   <p>Size: {artData.width} x {artData.height}<br />
                   {artData.media}</p>
-                        {artData.sold ? <p className="sold">Sold</p> : ""}
+                        {artData.sold ? <p className={styles.sold}>Sold</p> : ""}
                         {!artData.sold && artData.forSale ? <div>{artData.price_format}</div> : ""}
                         {artData.forSale ? <SaleInfo artitem={artData}/> : <div>Not for sale</div>}
                 </div> 
@@ -49,7 +49,7 @@ export default function ArtDetail({ artData }) {
 
 export async function getStaticPaths() {
     const paths = await getAllArtIds();
-    console.log(paths);
+    // console.log(paths);
     return {
       paths,
       fallback: false
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
   
   export async function getStaticProps({ params }) {
     const artData = await getArtData(params.id);
-    console.log("artwork:", artData);
+    // console.log("artwork:", artData);
     return {
       props: {
         artData

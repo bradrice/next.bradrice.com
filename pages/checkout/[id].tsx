@@ -28,7 +28,7 @@ interface iProps {
 }
 
 export default function CheckoutPage({artitem}) {
-  console.log(artitem);
+  // console.log(artitem);
 
     return (
             <Layout>
@@ -43,7 +43,7 @@ export default function CheckoutPage({artitem}) {
 
 export async function getStaticPaths() {
   const paths = await getAllArtIds();
-  console.log(paths);
+  // console.log(paths);
   return {
     paths,
     fallback: false
@@ -52,7 +52,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const artitem = await fetchArtworkDetailData (params.id);
-  console.log("artwork:", artitem);
+  // console.log("artwork:", artitem);
   return {
     props: {
       artitem
