@@ -149,8 +149,8 @@ export default function ArtListPage({ artData }) {
 export async function getStaticProps({ params }) {
   const pageSize = process.env.NEXT_PUBLIC_PAGESIZE;
   console.log("in getStaticProps", pageSize);
-  const artData = await fetchArtworkPagedData(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/artwork/?page=1&page_size=${pageSize}`);
-  // console.log("artwork:", artData);
+  const artData = await fetchArtworkPagedData(`${process.env.apiServer}/api/artwork/?page=1&page_size=${pageSize}`);
+  console.log("artwork:", artData);
   return {
     props: {
       artData

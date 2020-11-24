@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import {setSaleItem } from '../../state/actions/artworkActions';
-import { loadStripe } from '@stripe/stripe-js';
-import {Elements} from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
+// import {Elements} from '@stripe/react-stripe-js';
 import Link from 'next/link'
 
 // import store from '../../state/store';

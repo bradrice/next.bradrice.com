@@ -1,7 +1,6 @@
 module.exports = {
     env: {
-      customKey: 'my-value',
-      apiServer: "http://localhost:8000"
-    },
-  }
-  
+        apiServer: "http://localhost:8000",
+        STRIPE_PUBLISHABLE: "pk_test_AuwxcUOjPDUHbXyODkwDQ74r"
+      },
+}

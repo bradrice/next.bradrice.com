@@ -1,12 +1,12 @@
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js';
-import CheckoutForm from './CheckoutForm';
+import CheckoutForm from '../../components/CheckoutForm';
 import Layout from '../../components/layout';
 import { getAllArtIds } from '../../lib/art';
 import { fetchArtworkDetailData } from '../../lib/api';
 
-const stripekey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE;
+const stripekey = process.env.STRIPE_PUBLISHABLE;
 const stripePromise = loadStripe(stripekey);
 
 interface iProps {

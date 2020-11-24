@@ -6,7 +6,6 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import styles from './checkoutform.module.scss';
 import { Form } from "react-bootstrap";
 export default function CheckoutForm(props) {
   const [succeeded, setSucceeded] = useState(false);
@@ -30,7 +29,7 @@ export default function CheckoutForm(props) {
     console.log("On checkout form", purchase);
 
     window
-      .fetch(`${process.env.NEXT_PUBLIC_PAYMENT_SERVER_URL}/create-payment-intent`, {
+      .fetch(`${process.env.apiServer}/create-payment-intent`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

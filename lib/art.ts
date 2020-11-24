@@ -6,7 +6,7 @@ import { fetchArtworkDetailData }  from './api';
 export async function getAllArtIds() {
     const response = await fetchArtworkData();
     const artworks = await response;
-    // console.log("artworks:", artworks.results);
+    // console.log("getAllArtIds:", artworks.results);
     // Returns an array that looks like this:
     // [
     //   {
@@ -20,7 +20,7 @@ export async function getAllArtIds() {
     //     }
     //   }
     // ]
-    const ids =  artworks.results.map(artwork => {
+    const ids =  await artworks.results.map(artwork => {
       return {
         params: {
           id: String(artwork.id)
