@@ -2,7 +2,7 @@ export const fetchArtworkData = async () => {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/artwork`);
         const data = (await response).json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (e) {
         console.log(e);

@@ -6,13 +6,8 @@ import Layout from '../../components/layout';
 import { getAllArtIds } from '../../lib/art';
 import { fetchArtworkDetailData } from '../../lib/api';
 
-// import { connect } from 'react-redux';
-
-//test
-// const stripePromise = loadStripe('pk_test_AuwxcUOjPDUHbXyODkwDQ74r');
-
-//live
-const stripePromise = loadStripe('pk_test_AuwxcUOjPDUHbXyODkwDQ74r');
+const stripekey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE;
+const stripePromise = loadStripe(stripekey);
 
 interface iProps {
   saleitem: {
@@ -64,21 +59,3 @@ export async function getStaticProps({ params }) {
     }
   }
 }
-   
-
-// const mapStateToProps = (state /*, ownProps*/) => {
-//     return {
-//       saleitem: state.saleitem
-//     }
-//   }
-  
-//   const mapDispatchToProps = (dispatch) => {
-//     return {
-    
-//     };
-//   }
-
-//   export const ConnectedCheckoutPage = connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//   )(CheckoutPage)

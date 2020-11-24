@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import Link from 'next/link'
-// import { Link, useHistory } from "react-router-dom";
 import {
   CardElement,
   useStripe,
@@ -9,18 +8,14 @@ import {
 } from "@stripe/react-stripe-js";
 import styles from './checkoutform.module.scss';
 import { Form } from "react-bootstrap";
-// import { createInferTypeNode } from "typescript";
-// import PAYMENT_SERVER_URL from '../../constants/server';
-
 export default function CheckoutForm(props) {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState('');
+  const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
   const elements = useElements();
-  // const history = useHistory();
   const router = useRouter();
 
   useEffect(() => {
@@ -241,9 +236,8 @@ export default function CheckoutForm(props) {
           </Form.Group>
           
           <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-          <button id="submit-btn" class="btn btn-primary submitBtn"
+          <button id="submit-btn" className="btn btn-primary submitBtn"
             disabled={processing || disabled || succeeded}
-            id="submit"
           >
             <span id="button-text">
               {processing ? (

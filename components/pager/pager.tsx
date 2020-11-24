@@ -1,9 +1,5 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-// import styles from './pager.scss';
-// import { connect } from 'react-redux';
-// import { ConnectedArtPage } from '../art/ArtPage'
-import { requestArtworkApiData, setSaleItem, requestArtworkPagedApiData } from '../../state/actions/artworkActions';
 
 interface IPagerProps {
   requestArtworkApiData: any,

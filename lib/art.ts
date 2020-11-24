@@ -6,7 +6,7 @@ import { fetchArtworkDetailData }  from './api';
 export async function getAllArtIds() {
     const response = await fetchArtworkData();
     const artworks = await response;
-    console.log("artworks:", artworks.results);
+    // console.log("artworks:", artworks.results);
     // Returns an array that looks like this:
     // [
     //   {
