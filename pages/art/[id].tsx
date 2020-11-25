@@ -6,6 +6,7 @@ import SaleInfo from '../../components/saleinfo/saleinfo';
 import Card from 'react-bootstrap/Card';
 import styles from './art.module.scss';
 import Head from 'next/head';
+import Link from 'next/link';
 
 // const stripePromise = loadStripe('pk_test_AuwxcUOjPDUHbXyODkwDQ74r');
 
@@ -13,7 +14,7 @@ export default function ArtDetail({ artData }) {
 
     let artwork = (
         <div className="row">
-          <div className="col-sm-8 offset-2">
+          <div className="col-sm-12">
             <Card className={styles.cardDetail}>
             {artData.artimage &&
               <Card.Img src={artData.artimage.gallery_large} alt={artData.title}  />
@@ -30,6 +31,9 @@ export default function ArtDetail({ artData }) {
                 </div> 
               </Card.Body> 
             </Card>
+            <div className={styles.linkback}>
+            <Link href="/art">Return to art</Link>
+            </div>
           </div>
         </div>
       )

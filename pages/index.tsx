@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 import React from 'react';
 // import './home.scss';
@@ -42,15 +42,17 @@ export default function HomePage({ carouselData }) {
             <div className="mt-1">
             <HomeCarousel slides={carouselData}/>
             </div>
+          </div>
         </div>
-        <div className="col-sm-8 offset-sm-2">
+        </div>
+        <div className="row">
+        <div className="col-sm-12">
           <div className={styles.homecopy}>
-          <p className="text-center">View more of my <Link href="/art"><a className="btn btn-primary">Artwork</a></Link></p>
+          <p className={`text-center ${styles.hometext}`}>View more of my <Link href="/art"><a className="btn btn-primary">Artwork</a></Link></p>
           <p>My artwork is all original, one of a kind pieces unless otherwise noted. I paint primarily in watercolor and or acrylic. I explore a number of subject matter as well as abstract art.</p>
           </div>
         </div>
         </div>
-      </div>
       </Layout>
     )
 };

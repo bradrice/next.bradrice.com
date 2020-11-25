@@ -115,12 +115,18 @@
 }
 
 .HomePage {
-  display: flex;
+  display: block;
   justify-content: center;
 }
 
 .homecopy {
   margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.hometext {
+  font-size: 16px;
 }
 
 @media (max-width: 600px) {

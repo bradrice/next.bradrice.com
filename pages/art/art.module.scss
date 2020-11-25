@@ -35,6 +35,13 @@
     margin: 1em auto;   
 }
 
+@media (max-width: 600px) {
+    .cardDetail {
+    width: 95%; 
+    margin: 1em auto;  
+  }
+}
+
   .cardText {
       margin-bottom: .5em;
   }
@@ -46,4 +53,8 @@
   .cardImage {
       max-width: 400px;
       max-height: 400px;
+  }
+
+  .linkback {
+      margin: 1em .5em;
   }

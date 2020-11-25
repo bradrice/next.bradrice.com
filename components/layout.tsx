@@ -16,8 +16,10 @@ export default function Layout({ children }) {
             <title>Brad Rice</title>
 
         </Head>
-            <Header/>
+        <Header/>
+        <div className="container-fluid">
         <div className="main">{children}</div>
+        </div>
         </div>
     </div>
     )
