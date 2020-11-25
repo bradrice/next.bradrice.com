@@ -120,9 +120,6 @@ export default function ArtListPage({ artData }) {
                       <Card.Body>
                         <Card.Title>{item.title}</Card.Title>
                         <Card.Text className={styles.cardText}>
-                          {item.description}
-                        </Card.Text>
-                        <Card.Text className={styles.cardText}>
                         {item.sold ? <span className={styles.sold}>Sold</span> : ""}
                         </Card.Text>
                         <Link href={`/art/${item.id}`}>Detail</Link>
