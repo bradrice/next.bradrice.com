@@ -115,7 +115,8 @@ export default function ArtListPage({ artData }) {
                 {(artWork.results || []).map(item => (
                     <div className={`col-sm-4 ${styles.cardCol}`} key={item.id}>
                       <Card className={styles.cardItem}>
-                      <Link href={`/art/${item.id}`}><Card.Img src={item.artimage.gallery_medium} alt={item.description}  /></Link>
+                      <Link href={`/art/${item.id}`}>
+                        <Card.Img className={styles.cardImage} src={item.artimage.gallery_medium} alt={item.title} /></Link>
                       <Card.Body>
                         <Card.Title>{item.title}</Card.Title>
                         <Card.Text className={styles.cardText}>

@@ -23,7 +23,6 @@
 }
 
 .cardItem {
-    white-space: nowrap;
     display: inline-block;
     border: none;
     margin: 0 auto 2rem auto;
@@ -31,10 +30,10 @@
 }
 
 
-    .cardDetail {
-        width: 80%; 
-        margin: 1em auto;   
-  }
+.cardDetail {
+    width: 80%; 
+    margin: 1em auto;   
+}
 
   .cardText {
       margin-bottom: .5em;
@@ -42,4 +41,9 @@
 
   .cardCol {
       text-align: center;
+  }
+
+  .cardImage {
+      max-width: 400px;
+      max-height: 400px;
   }
