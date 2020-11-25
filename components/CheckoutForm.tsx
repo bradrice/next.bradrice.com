@@ -26,10 +26,10 @@ export default function CheckoutForm(props) {
         id: props.id
     }
 
-    console.log("On checkout form", purchase);
+    // console.log("On checkout form", purchase);
 
     window
-      .fetch(`${process.env.apiServer}/create-payment-intent`, {
+      .fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/create-payment-intent`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

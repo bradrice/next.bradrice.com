@@ -95,28 +95,6 @@ export default function HomeCarousel({ slides }) {
       )
 };
 
-// export async function getStaticProps({params}) {
-//   console.log("fetchng from server");
-//   let carouselData;
-//   // fetchCarouselData().then((data) => {
-//   //   carouselData = data;
-//   // });
-//   const response = await fetch(`${process.env.apiServer}/api/carousel/1`);
-//   carouselData = await response.json();
-//   console.log(carouselData);
-//   return {
-//     props: {
-//       visibleSlides: carouselData
-//     }
-//   }
-// }
-
-// export default function Carousel(props) {
-//   return (
-//     <p>Carousel here</p>
-//   )
-// }
-
 
 
 

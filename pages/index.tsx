@@ -57,7 +57,7 @@ export default function HomePage({ carouselData }) {
 
 export async function getStaticProps() {
   // const allPostsData = getSortedPostsData()
-  const response = await fetch(`${process.env.apiServer}/api/carousel/1`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/carousel/1`);
   const carouselData = await response.json();
   return {
     props: {
@@ -65,24 +65,3 @@ export async function getStaticProps() {
     }
   }
 }
-
-
-// export async function getInitialProps({ req }: NextPageContext) {
-//   let carouselData;
-//   const response = await fetch(`${process.env.apiServer}/api/carousel/1`);
-//   carouselData = await response.json();
-//   console.log(carouselData);
-//   return {
-//     props: {
-//       carouselData
-//     }
-   
-//   }
-// }
-
-
-
-
-
-// export default HomePage;
-
