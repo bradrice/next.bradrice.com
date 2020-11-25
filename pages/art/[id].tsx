@@ -47,16 +47,16 @@ export default function ArtDetail({ artData }) {
 
         }
 
-export async function getStaticPaths() {
-    const paths = await getAllArtIds();
-    // console.log(paths);
-    return {
-      paths,
-      fallback: false
-    }
-  }
+// export async function getStaticPaths() {
+//     const paths = await getAllArtIds();
+//     // console.log(paths);
+//     return {
+//       paths,
+//       fallback: false
+//     }
+//   }
   
-  export async function getStaticProps({ params }) {
+  export async function getServerSideProps({ params }) {
     const artData = await getArtData(params.id);
     // console.log("artwork:", artData);
     return {

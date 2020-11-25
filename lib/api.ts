@@ -11,7 +11,7 @@ export const fetchArtworkData = async () => {
 
 export const fetchArtworkDetailData = async (id) => {
     try {
-        console.log('fetting artwork:', id);
+        // console.log('fetching artwork:', id);
         const response = await fetch(`${process.env.apiServer}/api/artwork/${id}`);
         const data = (await response).json();
         // console.log(data);
