@@ -42,7 +42,7 @@ export default function ArtDetail({ artData }) {
         <title>Brad Rice art</title>
           <meta property="og:url"           content={`https://bradrice.com/art/${artData.id}`} />
           <meta property="og:type"          content="website" />
-          <meta property="og:title"         content={`Art by Brad Rice ${artData.title}`} />
+          <meta property="og:title"         content={`Art by Brad Rice, ${artData.title}`} />
           <meta property="og:description"   content={artData.description} />
           <meta property="og:image"         content={artData.artimage.gallery_medium}  />
         </Head>
