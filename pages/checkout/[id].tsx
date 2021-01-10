@@ -3,8 +3,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js';
 import CheckoutForm from '../../components/CheckoutForm';
 import Layout from '../../components/layout';
-import { getAllArtIds } from '../../lib/art';
-import { fetchArtworkDetailData } from '../../lib/api';
+import { getAllArtIds, getArtData } from '../../lib/art';
+// import { fetchArtworkDetailData } from '../../lib/api';
 
 const stripekey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE;
 const stripePromise = loadStripe(stripekey);
@@ -41,18 +41,27 @@ export default function CheckoutPage({artitem}) {
         )
 }
 
-export async function getStaticPaths() {
-  const paths = await getAllArtIds();
-  // console.log(paths);
-  return {
-    paths,
-    fallback: false
-  }
-}
+// export async function getStaticPaths() {
+//   const paths = await getAllArtIds();
+//   // console.log(paths);
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// }
 
-export async function getStaticProps({ params }) {
-  const artitem = await fetchArtworkDetailData (params.id);
-  // console.log("artwork:", artitem);
+// export async function getStaticProps({ params }) {
+//   const artitem = await fetchArtworkDetailData (params.id);
+//   // console.log("artwork:", artitem);
+//   return {
+//     props: {
+//       artitem
+//     }
+//   }
+// }
+
+export async function getServerSideProps({ params }) {
+  const artitem = await getArtData(params.id);
   return {
     props: {
       artitem
