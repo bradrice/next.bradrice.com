@@ -3,8 +3,7 @@ import styles from './art.module.scss';
 import Link from 'next/link';
 // import { ConnectedPager } from '../pager/pager'
 import Layout from '../../components/layout';
-import { getAllArtIds, getArtData } from '../../lib/art';
-import { fetchArtworkData, fetchArtworkPagedData } from '../../lib/api';
+import { fetchArtworkData, fetchArtworkPagedData, fetchArtworkMediaTypes } from '../../lib/api';
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns';
 import SaleInfo from '../../components/saleinfo/saleinfo';
@@ -42,14 +41,13 @@ interface IArtworkProps {
 }
 
 
-
-
-export default function ArtListPage({ artData }) {
+export default function ArtListPage({ artData, menuItems  }) {
 
   const pageSize = process.env.NEXT_PUBLIC_PAGESIZE;
   const [artWork, setArt] = useState(artData);
   const [pageNum, setPage] = useState(1);
   const [mediaType, setMedia] = useState('all');
+  const [mediaItems, setMediaItems] = useState(menuItems);
 
   function goToPage(val) {
     setPage(val);
@@ -77,6 +75,11 @@ export default function ArtListPage({ artData }) {
     const response = await fetchArtworkPagedData(url);
     setArt(response);
   }
+
+  const getMenuItems = async () => {
+    const data = await fetchArtworkMediaTypes();
+    setMediaItems(data);
+  }
   
   
   const getArtworkByMedia = async (e) => {
@@ -101,9 +104,9 @@ export default function ArtListPage({ artData }) {
                   <label htmlFor="media" className="form-label">Filter by Media</label>
                   <select className="form-select" id="meida-select" name="media" onChange={getArtworkByMedia}>
                     <option value="all">All</option>
-                    <option value="W">Watercolor</option>
-                    <option value="A">Acrylic</option>
-                    <option value="MM">Mixed Media</option> 
+                    {mediaItems.map((item, v) => ( 
+                      <option value={item.key}>{item.value}</option>
+                    )) }
                     {/* <option value="O">Oil</option> */}
                   </select>
                 </div>
@@ -147,14 +150,16 @@ export default function ArtListPage({ artData }) {
           )
       }
 
-export async function getServerSideProps({ params }) {
-  const pageSize = process.env.NEXT_PUBLIC_PAGESIZE;
-  console.log("in getStaticProps", pageSize);
-  const artData = await fetchArtworkPagedData(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/artwork/?page=1&page_size=${pageSize}`);
-  // console.log("artwork:", artData);
-  return {
-    props: {
-      artData
-    }
-  }
-}
+      export async function getServerSideProps() {
+        const pageSize = process.env.NEXT_PUBLIC_PAGESIZE;
+        const [artData, menuItems] = await Promise.all([
+          fetchArtworkPagedData(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/artwork/?page=1&page_size=${pageSize}`),
+          fetchArtworkMediaTypes()
+        ]);
+        return {
+          props: {
+            artData,
+            menuItems
+          }
+        }
+      }

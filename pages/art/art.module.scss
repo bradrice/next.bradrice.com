@@ -51,9 +51,12 @@
   }
 
   .cardImage {
-      max-width: 400px;
-      max-height: 400px;
-  }
+    max-width: 600px;
+    max-height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
 
   .linkback {
       margin: 1em .5em;
