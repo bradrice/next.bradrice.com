@@ -13,6 +13,7 @@ export default function CheckoutForm(props) {
   const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
+  const [purchase, setPurchaseItem] = useState({});
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -25,6 +26,9 @@ export default function CheckoutForm(props) {
         title: props.title,
         id: props.id
     }
+
+    setPurchaseItem(purchase);
+
 
     // console.log("On checkout form", purchase);
 
@@ -75,7 +79,18 @@ export default function CheckoutForm(props) {
   };
 
   const handleSuccess = () => {
-    router.push("/checkout/success");
+    window
+      .fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/send-sms-success`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(purchase)
+      })
+      .then(res => {
+        router.push("/checkout/success");
+        return res.json();
+      })
   }
 
   const handleSubmit = async ev => {
