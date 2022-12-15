@@ -1,6 +1,6 @@
 module.exports = {
     env: {
-        apiServer: "http://localhost:8000",
-        STRIPE_PUBLISHABLE: "pk_test_AuwxcUOjPDUHbXyODkwDQ74r"
+        apiServer: "https://bradriceadmin.oh-joy.org",
+        STRIPE_PUBLISHABLE: "pk_live_kygTTSFZkwpTR9DXLnpeIH0S"
       },
 }
