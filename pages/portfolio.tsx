@@ -40,8 +40,38 @@ export default function PortfolioPage() {
         <div className="col-sm-12">
         <div id="body">
 		<div className="row">
-            <h2 className="large-12 columns">Web design and development</h2>
+            <h2 className="large-12 columns">CodeLogic application</h2>
 		</div>
+
+        <div className="row">
+
+<div className="col-sm-4">
+    <Card className={styles.cardItem}>
+    <Card.Img className={styles.cardImage} src="images/portfolio/changeRequestsPage.png" />
+        <Card.Body>
+            <p className="dscr">Change Requests from Github, in Codelogic</p>
+        </Card.Body>
+    </Card>
+    </div>
+
+    <div className="col-sm-4">
+    <Card className={styles.cardItem}>
+    <Card.Img className={styles.cardImage} src="images/portfolio/multi-select-explorer.png" />
+        <Card.Body>
+            <p className="dscr">Custom built search, with multi-select in CodeLogic.</p>
+        </Card.Body>
+    </Card>
+    </div>
+
+    <div className="col-sm-4">
+    <Card className={styles.cardItem}>
+    <Card.Img className={styles.cardImage} src="images/portfolio/context-manu.png" />
+        <Card.Body>
+            <p className="dscr">Custom built context menu inside of CodeLogic app.</p>
+        </Card.Body>
+    </Card>
+    </div>
+    </div>
         
 
 <div className="row">
@@ -51,7 +81,6 @@ export default function PortfolioPage() {
     <Card.Img className={styles.cardImage} src="images/portfolio/UA_Home_thumb.jpg" />
         <Card.Body>
             <p className="dscr">University of Akron Home page, responsive for mobile devices</p>
-            <a href="https://uakron.edu">Visit Site</a>
         </Card.Body>
     </Card>
     </div>
@@ -61,7 +90,6 @@ export default function PortfolioPage() {
     <Card.Img className={styles.cardImage} src="images/portfolio/curr_guide_thumb.jpg" />
         <Card.Body>
             <p className="dscr">Custom built responsive site for Prospective students visiting UA searching for majors offered.</p>
-            <a href="https://uakron.edu/academics_majors/undergraduate/">Visit Site</a>
         </Card.Body>
     </Card>
     </div>
@@ -71,7 +99,6 @@ export default function PortfolioPage() {
     <Card.Img className={styles.cardImage} src="images/portfolio/curriculum-search_thumb.png" />
         <Card.Body>
             <p className="dscr">Custom built responsive site for Prospective students visiting UA searching for classes available.</p>
-            <a href="https://uakron.edu/academics_majors/class-search/#/class-search/">Visit Site</a>
         </Card.Body>
     </Card>
     </div>
