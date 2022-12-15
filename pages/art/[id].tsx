@@ -17,7 +17,7 @@ export default function ArtDetail({ artData }) {
           <div className="col-sm-12">
             <Card className={styles.cardDetail}>
             {artData.artimage &&
-              <Card.Img src={artData.artimage.gallery_large} alt={artData.title}  />
+              <Card.Img src={artData.artimage.gallery_large} alt={artData.title} className={styles.cardImage} />
             }
               <Card.Body>
                 <h5 className="card-title">{artData.title}</h5>
@@ -42,7 +42,7 @@ export default function ArtDetail({ artData }) {
         <title>Brad Rice art</title>
           <meta property="og:url"           content={`https://bradrice.com/art/${artData.id}`} />
           <meta property="og:type"          content="website" />
-          <meta property="og:title"         content={`Art by Brad Rice ${artData.title}`} />
+          <meta property="og:title"         content={`Art by Brad Rice, ${artData.title}`} />
           <meta property="og:description"   content={artData.description} />
           <meta property="og:image"         content={artData.artimage.gallery_medium}  />
         </Head>

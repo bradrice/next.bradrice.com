@@ -48,7 +48,7 @@ export default function HomePage({ carouselData }) {
         <div className="row">
         <div className="col-sm-12">
           <div className={styles.homecopy}>
-          <p className={`text-center ${styles.hometext}`}>View more of my <Link href="/art"><a className="btn btn-primary">Artwork</a></Link></p>
+          <p className={`text-center ${styles.hometext}`}>View more of my <Link href="art"><a className="btn btn-primary">Artwork</a></Link></p>
           <p>My artwork is all original, one of a kind pieces unless otherwise noted. I paint primarily in watercolor and or acrylic. I explore a number of subject matter as well as abstract art.</p>
           </div>
         </div>
