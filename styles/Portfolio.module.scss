@@ -6,4 +6,11 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.dscr {
+    text-align: center;
 }
