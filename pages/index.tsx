@@ -16,14 +16,14 @@ interface IArtworkItem {
   "id": string,
   "title": string,
   "media": string,
-  "description":string,
-  "created":string,
-  "width":string,
+  "description": string,
+  "created": string,
+  "width": string,
   "height": string,
-  "artimage":string,
-  "sold":boolean,
-  "price":string,
-  "forSale":boolean
+  "artimage": string,
+  "sold": boolean,
+  "price": string,
+  "forSale": boolean
 }
 
 
@@ -34,32 +34,32 @@ interface IArtworkProps {
 
 
 export default function HomePage({ carouselData }) {
-    return (
-      <Layout>
+  return (
+    <Layout>
       <div className="row">
         <div className="col-sm-12">
           <div className={styles.HomePage}>
             <div className="mt-1">
-            <HomeCarousel slides={carouselData}/>
+              <HomeCarousel slides={carouselData} />
             </div>
           </div>
         </div>
-        </div>
-        <div className="row">
+      </div>
+      <div className="row">
         <div className="col-sm-12">
           <div className={styles.homecopy}>
-          <p className={`text-center ${styles.hometext}`}>View more of my <Link href="art"><a className="btn btn-primary">Artwork</a></Link></p>
-          <p>My artwork is all original, one of a kind pieces unless otherwise noted. I paint primarily in watercolor and or acrylic. I explore a number of subject matter as well as abstract art.</p>
+            <p className={`text-center ${styles.hometext}`}>View more of my <Link href="art"><a className="btn btn-primary">Artwork</a></Link></p>
+            <p>My artwork is all original, one of a kind pieces unless otherwise noted. I paint primarily in watercolor and or acrylic. I explore a number of subject matter as well as abstract art.</p>
           </div>
         </div>
-        </div>
-      </Layout>
-    )
+      </div>
+    </Layout>
+  )
 };
 
 export async function getStaticProps() {
   // const allPostsData = getSortedPostsData()
-  const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/carousel/1`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/carousel/1`, { cache: 'no-store' });
   const carouselData = await response.json();
   return {
     props: {
