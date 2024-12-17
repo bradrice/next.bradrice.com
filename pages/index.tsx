@@ -61,6 +61,7 @@ export async function getStaticProps() {
   // const allPostsData = getSortedPostsData()
   const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/carousel/1`);
   const carouselData = await response.json();
+  console.log(carouselData);
   return {
     props: {
       carouselData
