@@ -65,6 +65,6 @@ export async function getStaticProps() {
     props: {
       carouselData
     },
-    revaluate: 60
+    revalidate: 60,
   }
 }
