@@ -7,7 +7,6 @@ import { NextPageContext } from 'next'
 import { env } from 'process';
 import Card from 'react-bootstrap/Card';
 import { CustomModal } from '../components/modal/custom-modal';
-import { getStaticProps } from '.';
 import Button from 'react-bootstrap/Button'
 
 

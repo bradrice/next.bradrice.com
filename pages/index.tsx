@@ -57,7 +57,7 @@ export default function HomePage({ carouselData }) {
   )
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // const allPostsData = getSortedPostsData()
   const response = await fetch(`${process.env.NEXT_PUBLIC_REACT_APP_API_SERVER}/api/carousel/1`);
   const carouselData = await response.json();

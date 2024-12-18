@@ -1,0 +1,15 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/about": "pages/about.html",
+  "/checkout/failure": "pages/checkout/failure.html",
+  "/checkout/success": "pages/checkout/success.html",
+  "/contact": "pages/contact.html",
+  "/art/[id]": "pages/art/[id].js",
+  "/art": "pages/art.js",
+  "/checkout/[id]": "pages/checkout/[id].js",
+  "/": "pages/index.js",
+  "/portfolio": "pages/portfolio.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
