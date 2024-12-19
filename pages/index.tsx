@@ -40,7 +40,8 @@ export default function HomePage({ carouselData }) {
         <div className="col-sm-12">
           <div className={styles.HomePage}>
             <div className="mt-1">
-              <HomeCarousel slides={carouselData} />
+            {/*  <HomeCarousel slides={carouselData} /> */}
+<h3>carousleData.artimage.gallery_large</h3>
             </div>
           </div>
         </div>
@@ -66,6 +67,5 @@ export async function getServerSideProps() {
     props: {
       carouselData
     },
-    revalidate: 60,
   }
 }

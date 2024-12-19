@@ -77,10 +77,6 @@ export default function HomeCarousel({ slides }) {
                                   id={slide.title}
                                 />
                                   </div>
-                                <Carousel.Caption>
-                                <h3>{slide.title}</h3>
-                                <p>{slide.description}</p>
-                              </Carousel.Caption>
                             </Carousel.Item>
                             )
                     })}
